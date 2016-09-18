@@ -1,30 +1,33 @@
 #ifndef _PARAMS
 
-#include <iostream>
-#include <string>
+#define _PARAMS
+
 #include <vector>
 #include <fstream>
-
-#define _PARAMS
 
 enum InputFormat {FI_AP,FI_RCAB};
 
 class Parameter {
 	public:
+		InputFormat _format; //Indicating format of input	
 		Parameter(const std::string&,InputFormat);
 
+		~Parameter() {}
 	private:
 	    int _n;
 		float _alpha;
-		float _hnp; //Hub-Node price	
-		float _nhp; //Node-Hub price  
-	    std::vector<std::vector<float> > _flow; // Flow between nodes i and j
-		std::vector<float> _fcost; // Cost of establishing hub in node i	
+		float _c; //Node-Hub price	
+		float _d; //Hub-Node price 
 	
-		InputFormat _format; //Indicating format of input	
+		//In AP instances _cij will be used as matrix of distances between nodes
+		//while n CAB and RAND instances will be used as matrix of costs 
+	   	std::vector<std::vector<float> > _cij; 	
+	    std::vector<std::vector<float> > _wij; // Flow between nodes i and j
+		std::vector<float> _fi; // Cost of establishing hub in node i	
 
 		void readAp(std::ifstream&);
 		void readRcab(std::ifstream&);
+		void errorMessage(const std::string&) const;
 };
 
 #endif
