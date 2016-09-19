@@ -17,6 +17,8 @@ class Swarm {
 	private:
 		const Parameter& _param;	
 		int _iterationNumber;
+		std::vector<Particle> _particles;
+			
 };
 
 #endif
