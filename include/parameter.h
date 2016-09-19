@@ -16,9 +16,9 @@ class Parameter {
 		float getAlpha() const {return _alpha;}
 		float getNodeHabPrice() const {return _c;}
 		float getHabNodePice() const {return _d;}
-		float getFi(const int i) {return _fi[i];}
-		float getWij(const int i, const int j) {return _wij[i][j];}
-		float getCij(const int i, const int j) {return _cij[i][j];}
+		float getFi(const int i) const {return _fi[i];}
+		float getWij(const int i, const int j) const {return _wij[i][j];}
+		float getCij(const int i, const int j) const {return _cij[i][j];}
 
 		~Parameter() {}
 	private:

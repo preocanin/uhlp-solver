@@ -3,6 +3,7 @@
 #define _SWARM
 
 #include "parameter.h"
+#include "particle.h"
 #include <vector>
 
 class Swarm {
