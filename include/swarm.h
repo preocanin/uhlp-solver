@@ -5,6 +5,7 @@
 #include "parameter.h"
 #include "particle.h"
 #include <vector>
+#include <utility>
 
 class Swarm {
 	public:
@@ -17,8 +18,9 @@ class Swarm {
 	private:
 		const Parameter& _param;	
 		int _iterationNumber;
-		std::vector<Particle> _particles;
-			
+		std::vector<Particle> particles;
+		std::pair<std::vector<int>,double>  global_best;
+		double minObjective;	
 };
 
 #endif
