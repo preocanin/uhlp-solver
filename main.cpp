@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
+#include <set>
 
 #include "./include/parameter.h"
 #include "./include/swarm.h"
@@ -35,6 +36,7 @@ int main(int argc, char **argv) {
 		errorExit("./main -[ap|cab|rand] file_name seed_integer");
 	}
 
+	Particle p1(p);
 
 	return 0;
 }
