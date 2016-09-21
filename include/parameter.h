@@ -9,7 +9,7 @@ enum InputFormat {FI_AP,FI_RCAB};
 
 class Parameter {
 	public:
-		InputFormat _format; //Indicating format of input	
+		InputFormat format; //Indicating format of input	
 		Parameter() {}
 		Parameter(const std::string&,InputFormat);
 
