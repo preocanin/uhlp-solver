@@ -36,7 +36,8 @@ int main(int argc, char **argv) {
 		errorExit("./main -[ap|cab|rand] file_name seed_integer");
 	}
 
-	Particle p1(p);
+	std::vector<int> v(10,-1);
+	Particle p1(p,v);
 
 	return 0;
 }
