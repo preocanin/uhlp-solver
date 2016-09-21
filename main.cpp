@@ -1,15 +1,18 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdlib>
 
 #include "./include/parameter.h"
 #include "./include/swarm.h"
 
-
+void errorExit(const std::string&);
 
 int main(int argc, char **argv) {
+	int rseed;
 	Parameter p;
-	if(argc == 3) {
+
+	if(argc == 4) {
 		std::string format(argv[1]);
 		unsigned fsize = format.size();
 		if(fsize == 3 || fsize == 4 || fsize == 5) {
@@ -19,11 +22,17 @@ int main(int argc, char **argv) {
 				p = Parameter(std::string(argv[2]),FI_RCAB);
 		}
 		else
-			std::cerr << "Unknown format of input" << std::endl;
+			errorExit("Unknown format of input");
+
+		rseed = std::atoi(argv[3]);
+		if(rseed < 0) 
+			errorExit("Seed must be greater then zero");
+		else	
+		    std::srand(rseed);	
 	}
 	else {
 		std::cerr << "Error in arguments" << std::endl;
-		std::cerr << "./main -[ap|cab|rand] file_name" << std::endl;
+		errorExit("./main -[ap|cab|rand] file_name seed_integer");
 	}
 
 
@@ -31,4 +40,7 @@ int main(int argc, char **argv) {
 }
 
 
-
+void errorExit(const std::string& msg) {
+	std::cerr << msg << std::endl;
+	exit(EXIT_FAILURE);
+}
