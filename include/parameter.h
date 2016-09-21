@@ -21,6 +21,8 @@ class Parameter {
 		double getFi(const int i) const {return _fi[i];}
 		double getWij(const int i, const int j) const {return _wij[i][j];}
 		double getCij(const int i, const int j) const {return _cij[i][j];}
+		double getC() const {return _c;}
+		double getD() const {return _d;}
 
 		~Parameter() {}
 	private:
