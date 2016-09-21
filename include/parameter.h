@@ -10,28 +10,30 @@ enum InputFormat {FI_AP,FI_RCAB};
 class Parameter {
 	public:
 		InputFormat _format; //Indicating format of input	
+		Parameter() {}
 		Parameter(const std::string&,InputFormat);
 
+
 		int getN() const {return _n;}
-		float getAlpha() const {return _alpha;}
-		float getNodeHabPrice() const {return _c;}
-		float getHabNodePice() const {return _d;}
-		float getFi(const int i) const {return _fi[i];}
-		float getWij(const int i, const int j) const {return _wij[i][j];}
-		float getCij(const int i, const int j) const {return _cij[i][j];}
+		double getAlpha() const {return _alpha;}
+		double getNodeHabPrice() const {return _c;}
+		double getHabNodePice() const {return _d;}
+		double getFi(const int i) const {return _fi[i];}
+		double getWij(const int i, const int j) const {return _wij[i][j];}
+		double getCij(const int i, const int j) const {return _cij[i][j];}
 
 		~Parameter() {}
 	private:
 	    int _n;
-		float _alpha;
-		float _c; //Node-Hub price	
-		float _d; //Hub-Node price 
+		double _alpha;
+		double _c; //Node-Hub price	
+		double _d; //Hub-Node price 
 	
 		//In AP instances _cij will be used as matrix of distances between nodes
 		//while n CAB and RAND instances will be used as matrix of costs 
-	   	std::vector<std::vector<float> > _cij; 	
-	    std::vector<std::vector<float> > _wij; // Flow between nodes i and j
-		std::vector<float> _fi; // Cost of establishing hub in node i	
+	   	std::vector<std::vector<double> > _cij; 	
+	    std::vector<std::vector<double> > _wij; // Flow between nodes i and j
+		std::vector<double> _fi; // Cost of establishing hub in node i	
 
 		void readAp(std::ifstream&);
 		void readRcab(std::ifstream&);
