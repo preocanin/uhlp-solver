@@ -4,10 +4,13 @@
 
 #include "parameter.h"
 #include <vector>
+#include <map>
 
 class Particle {
 	public:
-		Particle(const Parameter&,std::vector<int>&);
+		Particle(const Parameter&);
+
+		void move(const double&,const double&,const double&);
 
 		bool isEmpty() const {
 			return current_solution == std::vector<int>(_param.getN(),-1); 
@@ -24,7 +27,8 @@ class Particle {
 		bool operator> (const Particle& p) const {
 			return objectiveCurrent > p.objectiveCurrent;
 		}
-	
+
+		double getGlobalObj() const { return objectiveGlobal; }	
 			
 
 		~Particle() {}
@@ -35,15 +39,18 @@ class Particle {
 		double objectiveCurrent;
 		double objectiveLocalMin;
 
+		double vmax,vmin;
+
 		std::vector<int> current_solution;
 		std::vector<int> local_best;
-		std::vector<int> &global_best;
 		std::vector<int> vector_speed;
 
+		static double objectiveGlobal;
+		static std::vector<int> global_best;
+		static std::map<std::vector<int>,double> all_solutions;
+
 		double calculateObjectiveFn() const;
-		double calculateFlowCost(const int i,const int j) const {
-			return _param.getCij(i,j)*_param.getWij(i,j); 
-		}
 };
+
 
 #endif
