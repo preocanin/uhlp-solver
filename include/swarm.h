@@ -19,8 +19,6 @@ class Swarm {
 		const Parameter& _param;	
 		int _iterationNumber;
 		std::vector<Particle> particles;
-		std::pair<std::vector<int>,double>  global_best;
-		double minObjective;	
 };
 
 #endif
