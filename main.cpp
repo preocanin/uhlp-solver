@@ -3,6 +3,7 @@
 #include <string>
 #include <cstdlib>
 #include <set>
+#include <iomanip>
 
 #include "./include/parameter.h"
 #include "./include/swarm.h"
@@ -36,8 +37,15 @@ int main(int argc, char **argv) {
 		errorExit("./main -[ap|cab|rand] file_name seed_integer");
 	}
 
-	std::vector<int> v(10,-1);
-	Particle p1(p,v);
+	Swarm s(p);
+	std::cout << std::setprecision(12) << s.getBestSolution() << std::endl;
+
+//	Particle part(p);
+//	part.printSolution(std::cout);
+//	part.move(.5,.5,.5);
+//	part.printSolution(std::cout);
+//	part.move(.5,.5,.5);
+//	part.printSolution(std::cout);
 
 	return 0;
 }
