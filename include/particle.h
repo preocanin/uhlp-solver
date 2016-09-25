@@ -29,7 +29,9 @@ class Particle {
 		}
 
 		double getGlobalObj() const { return objectiveGlobal; }	
-			
+		double getObj() const { return objectiveCurrent; }			
+
+	 	void printSolution(std::ostream& out) const;
 
 		~Particle() {}
 		
@@ -43,13 +45,16 @@ class Particle {
 
 		std::vector<int> current_solution;
 		std::vector<int> local_best;
-		std::vector<int> vector_speed;
+		std::vector<double> vector_speed;
 
 		static double objectiveGlobal;
 		static std::vector<int> global_best;
 		static std::map<std::vector<int>,double> all_solutions;
 
 		double calculateObjectiveFn() const;
+		double calculateAP() const;
+		double calculateRCAB() const;
+		void randInitSolution();
 };
 
 
