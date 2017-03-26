@@ -5,8 +5,8 @@
 #include <set>
 #include <iomanip>
 
-#include "./include/parameter.h"
-#include "./include/swarm.h"
+#include "../include/parameter.h"
+#include "../include/swarm.h"
 
 void errorExit(const std::string&);
 
