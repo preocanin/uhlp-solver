@@ -2,8 +2,11 @@ PROGRAM=uhlp
 CXX=g++ 
 CXXFLAGS= -std=c++1z -Wall
 
-$(PROGRAM): ./lib/main.cpp parameter.o swarm.o particle.o
-	mkdir bin && $(CXX) $(CXXFLAGS) ./lib/main.cpp parameter.o swarm.o particle.o -o ./bin/$(PROGRAM)
+$(PROGRAM): bin ./lib/main.cpp parameter.o swarm.o particle.o
+	$(CXX) $(CXXFLAGS) ./lib/main.cpp parameter.o swarm.o particle.o -o ./bin/$(PROGRAM)
+
+bin: 
+	mkdir bin
 
 swarm.o: ./include/swarm.h ./lib/swarm.cpp ./include/parameter.h ./include/particle.h
 	$(CXX) $(CXXFLAGS) ./lib/swarm.cpp -c
@@ -14,10 +17,11 @@ particle.o: ./include/particle.h ./lib/particle.cpp ./include/parameter.h
 parameter.o: ./include/parameter.h ./lib/parameter.cpp
 	$(CXX) $(CXXFLAGS) ./lib/parameter.cpp -c
 
-.PHONY: clean
+.PHONY: clean 
 
 clean:
-	-rm *.o main
+	-rm *.o
 	-rm -r bin
+
 
 
