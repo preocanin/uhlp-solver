@@ -1,4 +1,8 @@
-bin/
+# Build directory
+build/
+
+## VS Code
+.vscode/
 
 ## Vim temporary files
 *.swo
@@ -6,3 +10,5 @@ bin/
 *.swm
 *.o
 
+# Doxygen
+docs/html/

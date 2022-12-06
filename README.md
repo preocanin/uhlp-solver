@@ -1,2 +1,3 @@
-# uhlp-solver
-This is a faculty project created for learning purposes.
+# UHLP Solver
+
+Uncapacitaded Hub Location Problem (UHLP) solver written in C++17 using Particle Swarm Optimization.
